@@ -1,37 +1,33 @@
 ---
-import "../styles/global.css";
-import { getCollection } from "astro:content";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import BlogPost from "../components/BlogPost.astro";
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import BlogPost from '../components/BlogPost.astro';
 
-const pageTitle = "Mi blog de Astro aprendizaje";
-const allPosts = await getCollection("blog");
+const pageTitle = 'Mi blog de Astro aprendizaje';
+const allPosts = await getCollection('blog');
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<Header />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
 
-		<h1>{pageTitle}</h1>
-		<p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-		<ul>
-			{
-				allPosts.map((post) => (
-					<BlogPost title={post.data.title} url={`/posts/${post.id}/`} />
-				))
-			}
-		</ul>
-		<Footer />
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
+    <h1>{pageTitle}</h1>
+    <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+    <ul>
+      {allPosts.map(post => <BlogPost title={post.data.title} url={`/posts/${post.id}/`} />)}
+    </ul>
+    <Footer />
+    <script>
+      import '../scripts/menu.js';
+    </script>
+  </body>
 </html>
